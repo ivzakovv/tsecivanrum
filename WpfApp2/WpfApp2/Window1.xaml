@@ -1,0 +1,27 @@
+﻿<Window x:Class="WpfApp2.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        mc:Ignorable="d"
+        Title="Window1" Height="450" Width="654" Loaded="Window_Loaded">
+    <Window.Resources>
+        <local:aeroDataSet x:Key="aeroDataSet"/>
+        <CollectionViewSource x:Key="aeroViewSource" Source="{Binding aero, Source={StaticResource aeroDataSet}}"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource aeroViewSource}" Background="#FF70B1CD">
+        <DataGrid x:Name="aeroDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="105,45,81,54" RowDetailsVisibilityMode="VisibleWhenSelected" SelectionChanged="AeroDataGrid_SelectionChanged" Background="#FF70B1CD">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="iDColumn" Binding="{Binding ID}" Header="ID" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="start_CountryColumn" Binding="{Binding Start_Country}" Header="Start Country" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="finish_CountryColumn" Binding="{Binding Finish_Country}" Header="Finish Country" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="start_TimeColumn" Binding="{Binding Start_Time}" Header="Start Time" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="finishTimeColumn" Binding="{Binding FinishTime}" Header="Finish Time" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="passazhiriColumn" Binding="{Binding Passazhiri}" Header="Passazhiri" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="price_MestoColumn" Binding="{Binding Price_Mesto}" Header="Price Mesto" Width="SizeToHeader"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>
